@@ -21,20 +21,25 @@ public class Controller {
     MyService service;
 
     Logger logger = LogManager.getLogger(Controller.class);
+
     @PostMapping("/admit")
     @ResponseBody
-    public ResponseEntity<LinkedHashMap<String, String>> admitController() throws IOException {
+    public ResponseEntity<LinkedHashMap<String, Object>> admitController(String hospital_id, String data) throws IOException {
         logger.info(" ");
         logger.info("/example/api/admit");
-        return service.admitService();
+        logger.info("\nhospital_id: " + hospital_id + "\ndata: " + data);
+        return service.admitService(hospital_id, data);
     }
+
     @PostMapping("/discharge")
     @ResponseBody
-    public ResponseEntity<LinkedHashMap<String, String>> dischargeController() throws IOException {
+    public ResponseEntity<LinkedHashMap<String, Object>> dischargeController(String hospital_id, String data) throws IOException {
         logger.info(" ");
         logger.info("/example/api/discharge");
-        return service.dischargeService();
+        logger.info("\nhospital_id: " + hospital_id + "\ndata: " + data);
+        return service.dischargeService(hospital_id, data);
     }
+
     @PostMapping("/monitorInterface")
     @ResponseBody
     public ResponseEntity<LinkedHashMap<String, String>> monitorInterfaceController() throws IOException {
@@ -42,6 +47,7 @@ public class Controller {
         logger.info("/example/api/monitorInterface");
         return service.monitorInterfaceService();
     }
+
     @PostMapping("/order")
     @ResponseBody
     public ResponseEntity<LinkedHashMap<String, String>> orderController() throws IOException {
@@ -49,6 +55,7 @@ public class Controller {
         logger.info("/example/api/order");
         return service.orderService();
     }
+
     @GetMapping("/summary")
     @ResponseBody
     public ResponseEntity<LinkedHashMap<String, String>> summaryController() throws IOException {
