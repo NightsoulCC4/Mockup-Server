@@ -27,7 +27,6 @@ public class Controller {
     public ResponseEntity<LinkedHashMap<String, Object>> admitController(String hospital_id, String data) throws IOException {
         logger.info(" ");
         logger.info("/example/api/admit");
-        logger.info("\nhospital_id: " + hospital_id + "\ndata: " + data);
         return service.admitService(hospital_id, data);
     }
 
@@ -36,7 +35,6 @@ public class Controller {
     public ResponseEntity<LinkedHashMap<String, Object>> dischargeController(String hospital_id, String data) throws IOException {
         logger.info(" ");
         logger.info("/example/api/discharge");
-        logger.info("\nhospital_id: " + hospital_id + "\ndata: " + data);
         return service.dischargeService(hospital_id, data);
     }
 
@@ -50,10 +48,10 @@ public class Controller {
 
     @PostMapping("/order")
     @ResponseBody
-    public ResponseEntity<LinkedHashMap<String, String>> orderController() throws IOException {
+    public ResponseEntity<LinkedHashMap<String, Object>> orderController(String hospital_id, String data) throws IOException {
         logger.info(" ");
         logger.info("/example/api/order");
-        return service.orderService();
+        return service.orderService(hospital_id, data);
     }
 
     @GetMapping("/summary")
