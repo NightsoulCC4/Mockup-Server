@@ -13,6 +13,10 @@ import com.server.mockup.Utility.Utility;
 public class MyService {
     Logger logger = LogManager.getLogger(MyService.class);
 
+    public MyService(){
+
+    }
+
     public ResponseEntity<LinkedHashMap<String, Object>> admitService(String hospital_id, String data) throws IOException {
         LinkedHashMap<String, Object> list = null;
         try {
@@ -49,11 +53,11 @@ public class MyService {
 
             logger.info("\nafter convert: " + jsonData);
 
-            logger.info("\nresponse [" + HttpStatus.OK.value() + "] : " );
+            logger.info("\nresponse [" + HttpStatus.OK.value() + "] : " + list);
             return ResponseEntity.status(HttpStatus.OK).body(list);
         } catch(Exception e){
             e.printStackTrace();
-            logger.info(" , response [" + HttpStatus.INTERNAL_SERVER_ERROR.value() + "] : ");
+            logger.info(" , response [" + HttpStatus.INTERNAL_SERVER_ERROR.value() + "] : " + list);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }    
     }
@@ -92,6 +96,7 @@ public class MyService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }    
     }
+    
     public ResponseEntity<LinkedHashMap<String, String>> summaryService() throws IOException {
         LinkedHashMap<String, String> list = new LinkedHashMap<>();
         try{
